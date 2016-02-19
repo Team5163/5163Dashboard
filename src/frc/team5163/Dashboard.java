@@ -10,7 +10,7 @@ import frc.team5163.gui.DriveParamsWindow;
 import frc.team5163.gui.CameraWindow;
 import java.io.IOException;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import frc.team5163.gui.TargetInfoWindow;
+import frc.team5163.gui.VisionInfoWindow;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +27,7 @@ public class Dashboard implements Runnable {
     
     private static final CameraWindow c = new CameraWindow();
     private static final DriveParamsWindow d = new DriveParamsWindow();
-    private static final TargetInfoWindow t = new TargetInfoWindow();
+    private static final VisionInfoWindow t = new VisionInfoWindow();
 
     /**
      * @param args the command line arguments
@@ -56,7 +56,7 @@ public class Dashboard implements Runnable {
         return d;
     }
     
-    public static TargetInfoWindow getTargetInfoWindow() {
+    public static VisionInfoWindow getTargetInfoWindow() {
         return t;
     }
 
