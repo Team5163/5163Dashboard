@@ -5,11 +5,11 @@
  */
 package frc.team5163.img;
 
-import frc.team5163.Dashboard;
 import frc.team5163.net.NetTableInterface;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
@@ -19,9 +19,9 @@ import java.awt.image.WritableRaster;
  * @author Rish Shadra <rshadra@gmail.com>
  */
 public class ImgOverlay {
-    
+
     private static int customInitX, customInitY;
-    
+
     private static boolean custom = false;
     private static BufferedImage latestFrame;
 
@@ -32,6 +32,7 @@ public class ImgOverlay {
         boolean lock = net.getNumber("targets", "targetX") > 0;
         BufferedImage copy = cloneBufferedImage(im);
         Graphics2D image = copy.createGraphics();
+        Stroke orig = image.getStroke();
         image.setStroke(new BasicStroke(3));
 
         double[] ContourXValues = net.getNumberArray("GRIP/contours", "centerX");
@@ -45,6 +46,8 @@ public class ImgOverlay {
             image.setColor(Color.green);
             image.drawOval((int) net.getNumber("targets", "targetX"), (int) net.getNumber("targets", "targetY"), 10, 10);
         }
+
+        image.setStroke(orig);
 
         if (custom) {
             image.setColor(Color.yellow);
