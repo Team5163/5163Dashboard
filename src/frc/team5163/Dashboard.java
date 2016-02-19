@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 public class Dashboard implements Runnable {
 
     public static final String NETWORK_TABLE_SERVER_IP = "127.0.0.1";
+    public static final String MJPEG_VIDEO_SERVER_IP = "127.0.0.1";
     // Possible values:
     // 127.0.0.1
     // 10.51.63.106
@@ -37,7 +38,7 @@ public class Dashboard implements Runnable {
         //d.setVisible(true);
         c.setVisible(true);
         t.setVisible(true);
-        WebcamViewer v = new WebcamViewer();
+        WebcamViewer v = new WebcamViewer(MJPEG_VIDEO_SERVER_IP);
         v.init();
         
         NetworkTable.setClientMode();

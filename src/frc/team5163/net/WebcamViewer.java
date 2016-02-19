@@ -47,9 +47,11 @@ public class WebcamViewer implements Runnable {
 
     private Socket socket;
     private Thread thread;
+    
+    private final String IP_ADDRESS;
 
-    public WebcamViewer() {
-
+    public WebcamViewer(String ip) {
+        IP_ADDRESS = ip;
     }
 
     /**
@@ -142,7 +144,7 @@ public class WebcamViewer implements Runnable {
     public void run() {
         for (;;) {
             try {
-                this.socket = new Socket("127.0.0.1", PORT);
+                this.socket = new Socket(IP_ADDRESS, PORT);
                 DataInputStream inputStream = new DataInputStream(this.socket.getInputStream());
                 DataOutputStream outputStream = new DataOutputStream(this.socket.getOutputStream());
                 //System.out.println("connected");
