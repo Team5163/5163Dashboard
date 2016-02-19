@@ -30,13 +30,7 @@ public class VisionSemiManual extends VisionProvider {
     }
 
     @Override
-    public void exec() {
-
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(VisionHW.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void process() {
 
         //System.out.println("MANUAL VISION EXEC");
         NetTableInterface net = new NetTableInterface();

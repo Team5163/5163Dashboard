@@ -33,15 +33,9 @@ public class VisionHW extends VisionProvider {
     }
 
     @Override
-    public void exec() {
+    public void process() {
         
         //System.out.println("H/W VISION EXEC");
-        
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(VisionHW.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
         double[] contourCenterXValues = contours.getNumberArray("centerX", defaultArray);
         double[] contourCenterYValues = contours.getNumberArray("centerY", defaultArray);

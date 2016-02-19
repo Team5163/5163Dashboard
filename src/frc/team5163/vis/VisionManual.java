@@ -14,7 +14,7 @@ import frc.team5163.vis.provider.VisionProvider;
 public class VisionManual extends VisionProvider {
 
     @Override
-    public void exec() {
+    public void process() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

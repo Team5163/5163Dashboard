@@ -18,14 +18,8 @@ import java.util.logging.Logger;
 public class VisionDisabled extends VisionProvider {
 
     @Override
-    public void exec() {
-
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(VisionHW.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+    public void process() {
+        
         NetTableInterface net = new NetTableInterface();
 
         net.putNumber("targets", "targetX", -1);
