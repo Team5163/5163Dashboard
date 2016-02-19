@@ -39,7 +39,6 @@ public class VisionSemiManual extends VisionProvider {
         }
 
         //System.out.println("MANUAL VISION EXEC");
-
         NetTableInterface net = new NetTableInterface();
 
         double[] ContourXValues = net.getNumberArray("GRIP/contours", "centerX");
@@ -63,12 +62,13 @@ public class VisionSemiManual extends VisionProvider {
 
         if (minDistance < customValidRange || 1 == 1) {
 
-            customInitX = (int) ContourXValues[closestCustom];
-            customInitY = (int) ContourYValues[closestCustom];
-            
-            ImgOverlay.setCustom(customInitX, customInitY);
-            
             try {
+
+                customInitX = (int) ContourXValues[closestCustom];
+                customInitY = (int) ContourYValues[closestCustom];
+
+                ImgOverlay.setCustom(customInitX, customInitY);
+
                 targetX = (int) ContourXValues[closestCustom];
                 targetY = (int) ContourYValues[closestCustom];
                 targetWidth = (int) ContourWidths[closestCustom];
@@ -89,11 +89,11 @@ public class VisionSemiManual extends VisionProvider {
         net.putNumber("targets", "targetY", targetY);
         net.putNumber("targets", "targetWidth", targetWidth);
         net.putNumber("targets", "targetHeight", targetHeight);
-        
+
         updateWindow(targetX, targetY);
 
     }
-    
+
     public void updateWindow(int x, int y) {
         Dashboard.getTargetInfoWindow().update(true, (int) x, (int) y, 0);
     }
