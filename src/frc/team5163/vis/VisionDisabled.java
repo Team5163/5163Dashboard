@@ -5,6 +5,8 @@
  */
 package frc.team5163.vis;
 
+import frc.team5163.Dashboard;
+import frc.team5163.net.NetTableInterface;
 import frc.team5163.vis.provider.VisionProvider;
 
 /**
@@ -15,7 +17,19 @@ public class VisionDisabled extends VisionProvider {
 
     @Override
     public void exec() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        NetTableInterface net = new NetTableInterface();
+        
+        net.putNumber("targets", "targetX", -1);
+        net.putNumber("targets", "targetY", -1);
+        net.putNumber("targets", "targetWidth", -1);
+        net.putNumber("targets", "targetHeight", -1);
+
+        updateWindow(-1, -1);
+
     }
-    
+
+    public void updateWindow(int x, int y) {
+        Dashboard.getTargetInfoWindow().update(true, (int) x, (int) y, 0);
+    }
 }

@@ -7,6 +7,7 @@ package frc.team5163.gui;
 
 import frc.team5163.Dashboard;
 import frc.team5163.img.ImgOverlay;
+import frc.team5163.vis.VisionDisabled;
 import frc.team5163.vis.VisionHW;
 import frc.team5163.vis.VisionSemiManual;
 
@@ -177,6 +178,7 @@ public class TargetInfoWindow extends javax.swing.JFrame {
 
     private void radioDisableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDisableActionPerformed
         disableLMRButtons();
+        setDisabled();
     }//GEN-LAST:event_radioDisableActionPerformed
 
     private void buttonLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLeftActionPerformed
@@ -197,6 +199,7 @@ public class TargetInfoWindow extends javax.swing.JFrame {
 
     private void radioHWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioHWActionPerformed
         disableLMRButtons();
+        setHW();
     }//GEN-LAST:event_radioHWActionPerformed
 
     private void radioSemiManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSemiManualActionPerformed
@@ -218,6 +221,7 @@ public class TargetInfoWindow extends javax.swing.JFrame {
     public void setDisabled() {
         ImgOverlay.clearCustom();
         radioDisable.setSelected(true);
+        Dashboard.getCameraWindow().setVisionProvider(new VisionDisabled());
     }
     
     public void setSemiManual(int x, int y) {
