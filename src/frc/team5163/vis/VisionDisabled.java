@@ -8,6 +8,8 @@ package frc.team5163.vis;
 import frc.team5163.Dashboard;
 import frc.team5163.net.NetTableInterface;
 import frc.team5163.vis.provider.VisionProvider;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,9 +19,15 @@ public class VisionDisabled extends VisionProvider {
 
     @Override
     public void exec() {
-        
+
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(VisionHW.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         NetTableInterface net = new NetTableInterface();
-        
+
         net.putNumber("targets", "targetX", -1);
         net.putNumber("targets", "targetY", -1);
         net.putNumber("targets", "targetWidth", -1);
